@@ -20,12 +20,16 @@ def parse_subs(varkeys, substitutions):
                 sub = dict.__getitem__(substitutions, var)
                 keys = varkeys.keymap[var]
                 append_sub(sub, keys, constants, sweep, linkedsweep)
+            else:
+                print "Variable", var, "not found!"
     else:
         for var in substitutions:
             key = getattr(var, "key", var)
             if key in varkeys.keymap:
                 sub, keys = substitutions[var], varkeys.keymap[key]
                 append_sub(sub, keys, constants, sweep, linkedsweep)
+            else:
+                print "Variable", var, "not found!"
     return constants, sweep, linkedsweep
 
 
